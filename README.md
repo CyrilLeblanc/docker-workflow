@@ -40,19 +40,19 @@ To prevent CD to the `docker` folder every time you want to perform action to yo
 
 ```sh
 # To start containers
-alias dup="docker-compose up -d --build -w ../docker"
+alias dup="docker-compose --file ../docker/docker-compose.yml up -d --build"
 
 # To stop containers
-alias ddown="docker-compose down --remove-orphans -w ../docker"
+alias ddown="docker-compose --file ../docker/docker-compose.yml down --remove-orphans"
 
 # To restart containers
 alias dres="ddown && dup"
 
 # To enter in bash
-alias dbash="clear && docker-compose exec -itu www-data -w /var/www/html web bash -w ../docker"
+alias dbash="clear && docker-compose --file ../docker/docker-compose.yml exec -itu www-data -w /var/www/html web bash"
 
 # To display logs
-alias dlogs="docker-compose logs -f --tail=100 -w ../docker"
+alias dlogs="docker-compose --file ../docker/docker-compose.yml logs -f --tail=100"
 
 # To start the container and enter in bash
 alias ddev="dup && dbash"
